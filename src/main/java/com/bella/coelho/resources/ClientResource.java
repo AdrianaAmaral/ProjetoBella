@@ -13,7 +13,8 @@ public class ClientResource {
 
 	@GetMapping
 	public ResponseEntity<Client> findAll() {
-		Client c = new Client();
+		Client c = new Client(1L, "Maria Silva", "Av Um", 111, "Centro", "Araraquara", "SP", "14800000",
+				"16 99999-9999", "maria@gmail.com", "988888888", "65115807092", "01/02/1990");
 		return ResponseEntity.ok().body(c);
 	}
 }

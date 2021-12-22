@@ -13,4 +13,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/console/**").permitAll();
         httpSecurity.headers().frameOptions().disable();
     }
-}
+} 

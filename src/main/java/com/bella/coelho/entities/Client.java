@@ -13,16 +13,12 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @ToString
 @EqualsAndHashCode (of={"id", "cpf"})
 public class Client implements Serializable {
@@ -49,8 +45,12 @@ public class Client implements Serializable {
 	@Getter @Setter private String cpf;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	@Getter @Setter private LocalDate dataNasc;
+	@Getter @Setter private LocalDate dataNasc;	
 	
-
+	public Client(Object object, String string, String string2, int i, String string3, String string4, String string5,
+			String string6, String string7, String string8, String string9, String string10, String string11) {
+		
+	}
+	
 }
 
