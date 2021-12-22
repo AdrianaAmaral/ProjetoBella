@@ -16,13 +16,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor
 @ToString
 @EqualsAndHashCode (of={"id", "cpf"})
 public class Client implements Serializable {
@@ -35,7 +35,7 @@ public class Client implements Serializable {
 	@Column(unique = true)
 	@Getter @Setter private String nome;
 	@Getter @Setter private String logradouro;
-	@Getter @Setter private Long numero;
+	@Getter @Setter private Integer numero;
 	@Getter @Setter private String bairro;
 	@Getter @Setter private String cidade;
 	@Getter @Setter private String estado;
