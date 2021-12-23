@@ -13,12 +13,14 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
+@Data
 @ToString
 @EqualsAndHashCode (of={"id", "cpf"})
 public class Client implements Serializable {
