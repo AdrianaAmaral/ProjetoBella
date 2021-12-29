@@ -20,12 +20,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Data
-@ToString
 @EqualsAndHashCode (of={"id", "cpf"})
 public class Client implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -35,23 +32,23 @@ public class Client implements Serializable {
 	@Getter private Long id;
 	
 	@Column(unique = true)
-	@Getter @Setter private String nome;
-	@Getter @Setter private String logradouro;
-	@Getter @Setter private Integer numero;
-	@Getter @Setter private String bairro;
-	@Getter @Setter private String cidade;
-	@Getter @Setter private String estado;
-	@Getter @Setter private String cep;
-	@Getter @Setter private String telefone;
-	@Getter @Setter private String email;
-	@Getter @Setter private String rg;
+	private String nome;
+	private String logradouro;
+	private Integer numero;
+	private String bairro;
+	private String cidade;
+	private String estado;
+	private String cep;
+	private String telefone;
+	private String email;
+	private String rg;
 	
 	@CPF
 	@Column(unique = true)
-	@Getter @Setter private String cpf;
+	private String cpf;
 	
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	@Getter @Setter private LocalDate dataNasc;
+	private LocalDate dataNasc;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")
