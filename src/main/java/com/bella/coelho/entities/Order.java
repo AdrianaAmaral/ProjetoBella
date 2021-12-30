@@ -52,5 +52,8 @@ public class Order implements Serializable {
 			this.orderStatus = orderStatus.getCode();
 		}
 	}
+
+	public Order(Object id2, Instant parse, OrderStatus paid, Client c1) {
+	}
 		
 }
