@@ -1,67 +1,34 @@
 package com.bella.coelho.entities;
 
-import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.validator.constraints.br.CPF;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
-@EqualsAndHashCode (of={"id", "cpf"})
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Client implements Serializable {
+public class Client extends People {
+	
+	public Client(Object object, String string, String string2, String string3, String string4, String string5,
+			String string6, int i, String string7, String string8, String string9, String string10, String string11,
+			String string12, Object object2, String string13) {
+		
+	}
+
 	private static final long serialVersionUID = 1L;
-	
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	@Getter private Long id;
-	
-	@Column(unique = true)
-	private String nome;
-	private String logradouro;
-	private Integer numero;
-	private String bairro;
-	private String cidade;
-	private String estado;
-	private String cep;
-	private String telefone;
-	private String email;
-	private String rg;
-	
-	@CPF
-	@Column(unique = true)
-	private String cpf;
-	
-	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDate dataNasc;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "client")
-	@Getter private List<Order> orders = new ArrayList<>();
-	
-	public Client(Object object, String string, String string2, int i, String string3, String string4, String string5,
-			String string6, String string7, String string8, String string9, String string10, String string11) {
-		
-	}
-	
+	private List<Order> orders = new ArrayList<>();
+			
 }
 
