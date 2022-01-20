@@ -25,7 +25,7 @@ import com.bella.coelho.repositories.ProductRepository;
 
 @Configuration
 @Profile("test")
-public class TestConfig implements CommandLineRunner {
+public class TestConfig {
 
 	@Autowired
 	private PeopleRepository peopleRepository;
@@ -42,8 +42,7 @@ public class TestConfig implements CommandLineRunner {
 	@Autowired
 	private OrderItemRepository orderItemRepository;
 
-	@Override
-	public void run(String... args) throws Exception {
+	public void instanciaDB() {
 		
 		Category cat1 = new Category(null, "SemiJoias");
 		Category cat2 = new Category(null, "Ouro");

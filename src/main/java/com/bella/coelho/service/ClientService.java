@@ -3,16 +3,20 @@ package com.bella.coelho.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.bella.coelho.entities.Client;
 import com.bella.coelho.entities.People;
 import com.bella.coelho.repositories.ClientRepository;
 import com.bella.coelho.repositories.PeopleRepository;
+import com.bella.coelho.service.exceptions.DatabaseException;
+import com.bella.coelho.service.exceptions.ResourceNotFoundException;
 
 @Service
 public class ClientService {
@@ -29,8 +33,8 @@ public class ClientService {
 	}
 	
 	public Client findById(Long id) {
-		Optional<Client> obj = repository.findById(id);
-		return obj.get();
+		Optional<People> obj = peopleRepository.findById(id);
+		return (Client) obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	public Client insert(Client obj) {
@@ -46,11 +50,18 @@ public class ClientService {
 		if (obj.getOrders().size() > 0) {
 			throw new DataIntegrityViolationException("Cliente possui um pedido aberto e não pode ser deletado!");
 		} else {
+			try {
 		repository.deleteById(id);
+			} catch (EmptyResultDataAccessException e) {
+				throw new ResourceNotFoundException(id);
+			} catch (DataIntegrityViolationException e) {
+				throw new DatabaseException(e.getMessage());
+			}
 		}
 	}
 	
 	public Client update(Long id, @Valid Client obj) {
+		try {
 		Client entity = repository.getById(id);
 		updateData(entity, obj);
 		
@@ -63,6 +74,9 @@ public class ClientService {
 		validaPorCpfEEmail(obj);
 		entityObj = new Client();
 		return repository.save(entity);
+		} catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 
 	}
 
