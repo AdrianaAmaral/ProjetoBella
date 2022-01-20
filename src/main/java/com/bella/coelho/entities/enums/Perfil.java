@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 public enum Perfil {
 
-	ADMIN(0, "ADMIN"), FUNCIONARIO(1, "FUNCIONARIO");
+	ADMIN(0, "ADMIN"), FUNCIONARIO(1, "FUNCIONARIO"); 
 
 	private Integer codigo;
 	private String descrição;

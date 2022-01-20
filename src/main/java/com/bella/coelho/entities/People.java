@@ -37,7 +37,7 @@ public abstract class People implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Getter private Long id;
+	@Getter @Setter private Long id;
 	
 	@NotNull(message = "O campo NOME é obrigatório")
 	@Getter @Setter private String nome;
@@ -71,7 +71,7 @@ public abstract class People implements Serializable {
 	@Getter @Setter private String telefone;
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	private LocalDate dataNasc;
+	@Getter @Setter private LocalDate dataNasc;
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "PERFIS")

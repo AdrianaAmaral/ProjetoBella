@@ -69,10 +69,10 @@ public class TestConfig implements CommandLineRunner {
 
 		Client c1 = new Client(null, "Antonio Silva", "02171207094", "98888888", "antoniosilva@gmail.com",
 				"123", "Rua Um", 1234, "Centro", "Araraquara", "SP", "14800000", "(16) 99999-0000", 
-				"10/02/1970", null, "20/01/2022");
+				"10/02/1970", null, "20/01/2022", null);
 		Client c2 = new Client(null, "Joao Silva", "72870145055", "99988888", "joaosilva@gmail.com",
 				"124", "Rua Dois", 234, "Centro", "Araraquara", "SP", "14800000", "(16) 99999-1111", 
-				"12/06/1980", null, "20/01/2022");
+				"12/06/1980", null, "20/01/2022", null);
 		
 		Employee e1 = new Employee(null, "Rosana Silva", "78144530039", "97788888", "rosanasilva@gmail.com",
 				"123", "Rua Três", 134, "Centro", "Araraquara", "SP", "14800000", "(16) 99999-2222", 
