@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bella.coelho.entities.Category;
+import com.bella.coelho.entities.Product;
 import com.bella.coelho.repositories.CategoryRepository;
 
 @Service
@@ -22,5 +23,9 @@ public class CategoryService {
 	public Category findById(Long id) {
 		Optional<Category> obj = repository.findById(id);
 		return obj.get();
+	}
+	
+	public Category insert(Category obj) {
+		return repository.save(obj);
 	}
 }

@@ -1,7 +1,7 @@
 package com.bella.coelho.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +14,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
@@ -71,15 +70,12 @@ public abstract class People implements Serializable {
 	@Getter @Setter private String telefone;
 
 	@JsonFormat(pattern = "dd/MM/yyyy")
-	@Getter @Setter private LocalDate dataNasc;
+	@Getter @Setter private Date dataNasc;
 
 	@ElementCollection(fetch = FetchType.EAGER)
 	@CollectionTable(name = "PERFIS")
 	protected Set<Integer> perfis = new HashSet<>();
 
-	@JsonFormat(pattern = "dd/MM/yyyy")
-	protected LocalDate dataCriacao = LocalDate.now();
-	
 	public Set<Perfil> getPerfis() {
 		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
 	}
